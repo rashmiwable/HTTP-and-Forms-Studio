@@ -2,11 +2,36 @@
 
 <head>
 	<meta charset="utf-8">
+	<link rel= "stylesheet" type ="text/css"  href="styles.css"/>
 	<script>
+		let actions = {
+  		"google": "https://www.google.com/serch",
+   		"duckDuckGo" : "https://duckduckgo.com/",
+		"bing" : "https://www.bing.com/serach",
+		"ask" : "https://www.ask.com/web"
+}
 		// TODO: create a handler
     window.addEventListener("load", function(){
-        // TODO: register the handler
-    });
+		
+		const submitBtn = document.querySelector("input['type= Submit']");
+		submitBtn.addEventListener("click", setSearchEngine);
+
+			function setSearchEngine(event){
+				let serchBox = document.querySelector("input[name='q']");
+				let selectedRadioBtn = document.querySelector('input[name=engine]:checked');
+			    let serchForm = document.getElementById('serchForm');
+				let selectedUrl = actions[selectedRadioBtn.value];
+
+				if (serchbox.value === ''){
+					window.alert("need to have serch term");
+					event.pwreventDefault();
+				} else if(selectedRadioBtn === null){
+					window.alert("need to have serch provider selecter");
+					event.pwreventDefault();
+				}
+			}
+		});
+    
 	</script>
 </head>
 
@@ -14,6 +39,14 @@
 
 	<form id="searchForm">
     <!-- TODO: add form elements -->
-	</form>
+	<lable><input type="text" name="q"/></lable>
+
+	<lable><input type="radio" name="engine" value="Google"/>Google</lable>
+	<lable><input type="radio" name="engine" value="DuckDuckGo"/>DuckDuckGo</lable>
+	<lable><input type="radio" name="engine" value="Bing"/>Bing</lable>
+	<lable><input type="radio" name="engine" value="Ask"/>Ask</lable>
+
+	<input type = "submit" value="Go!" /> 
+</form>
 
 </body>
